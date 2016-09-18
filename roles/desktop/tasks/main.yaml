@@ -5,6 +5,7 @@
     - byobu
     - firefox
     - git-gui
+    - gitg
     - gitk
     - kdiff3
     - keepass2
