@@ -1,4 +1,5 @@
 - package: name=git state=present
+  become: true
 
 - name: Link .gitconfig
   file: src={{ role_path }}/files/gitconfig dest=/home/{{ ansible_user_id }}/.gitconfig state=link
