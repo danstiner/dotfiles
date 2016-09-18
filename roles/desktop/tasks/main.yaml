@@ -1,0 +1,11 @@
+- name: Install software
+  package: name={{ item }} state=installed
+  with_items:
+    - byobu
+    - firefox
+    - git-gui
+    - gitk
+    - kdiff3
+    - keepass2
+    - redshift-gtk
+    - tig
