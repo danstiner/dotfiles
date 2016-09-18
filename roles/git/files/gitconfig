@@ -3,3 +3,5 @@
 [user]
 	name = Daniel Stiner
 	email = danstiner@gmail.com
+[alias]
+	publish = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
