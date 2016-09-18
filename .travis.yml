@@ -1,0 +1,3 @@
+sudo: required
+
+script: ./ubuntu.sh
