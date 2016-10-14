@@ -5,7 +5,16 @@
     - "../vars/default.yaml"
     - "../vars/default.yml"
 
-- name: Install software
+- name: Install command line utilities
+  package: name={{ item }} state=installed
+  become: true
+  with_items:
+    - byobu
+    - tig
+    - htop
+    - iotop
+
+- name: Install GUI software
   package: name={{ item }} state=installed
   become: true
   with_items:

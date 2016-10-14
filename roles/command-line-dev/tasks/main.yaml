@@ -1,8 +1,0 @@
-- name: Install software
-  package: name={{ item }} state=installed
-  become: true
-  with_items:
-    - byobu
-    - tig
-    - htop
-    - iotop
