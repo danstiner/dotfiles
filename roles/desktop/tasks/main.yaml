@@ -1,3 +1,10 @@
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "../vars/{{ ansible_os_family }}.yaml"
+    - "../vars/{{ ansible_os_family }}.yml"
+    - "../vars/default.yaml"
+    - "../vars/default.yml"
+
 - name: Install software
   package: name={{ item }} state=installed
   become: true
@@ -7,5 +14,5 @@
     - gitg
     - gitk
     - kdiff3
-    - keepass2
+    - "{{ keepass_package_name }}"
     - redshift-gtk
