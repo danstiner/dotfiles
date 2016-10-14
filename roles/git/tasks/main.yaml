@@ -1,4 +1,5 @@
-- package: name=git state=present
+- name: Install package
+  package: name=git state=present
   become: true
 
 - name: Link .gitconfig
