@@ -1,0 +1,6 @@
+- name: Install package
+  package: name=byobu state=present
+  become: true
+
+- name: Link config
+  file: src={{ role_path }}/files/config dest=/home/{{ ansible_user_id }}/.byobu state=link

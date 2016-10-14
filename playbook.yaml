@@ -2,3 +2,4 @@
   roles:
    - dev
    - git
+   - byobu
