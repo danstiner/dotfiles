@@ -2,10 +2,5 @@
   package: name={{ item }} state=installed
   become: true
   with_items:
-    - firefox
-    - git-gui
-    - gitg
-    - gitk
-    - kdiff3
-    - keepass2
-    - redshift-gtk
+    - byobu
+    - tig
