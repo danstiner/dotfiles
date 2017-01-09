@@ -4,4 +4,4 @@ dist: trusty
 
 before_script: rm $HOME/.gitconfig
 
-script: ./ubuntu.sh
+script: ./install.sh
