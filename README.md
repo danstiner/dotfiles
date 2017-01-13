@@ -5,4 +5,4 @@ This repository contains configuration dotfiles (e.g. `.gitconfig`) and setup sc
 
 ## Usage
 
-* On Ubuntu run `./ubuntu.sh`
+    curl -sSL https://raw.githubusercontent.com/danstiner/dotfiles/master/install.sh | bash
