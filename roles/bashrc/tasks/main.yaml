@@ -1,0 +1,2 @@
+- name: Link .bashrc
+  file: src={{ role_path }}/files/bashrc dest=/home/{{ ansible_user_id }}/.bashrc state=link
