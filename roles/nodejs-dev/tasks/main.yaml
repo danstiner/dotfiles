@@ -1,0 +1,19 @@
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}.yaml"
+    - "{{ ansible_os_family }}.yml"
+    - "default.yaml"
+    - "default.yml"
+
+- name: Install
+  package: name={{ item }} state=installed
+  become: true
+  with_items:
+    - nodejs
+    - npm
+    - "{{ build_essential_package_name }}"
+
+- name: Create npm prefix directory
+  file: path="$HOME/.npm" state=directory
+  notify:
+    - "Set npm prefix"
