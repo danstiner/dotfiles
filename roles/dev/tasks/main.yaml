@@ -12,6 +12,7 @@
     - tig
     - htop
     - iotop
+    - nmap
 
 - name: Install GUI software
   package: name={{ item }} state=installed
