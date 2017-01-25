@@ -15,6 +15,9 @@ if [ -d "${BASH_SOURCE%/*}/.git" ]; then
     fi
   fi
 
+  # Install ansible galaxy roles
+  ansible-galaxy install -r requirements.yml || exit 1
+
   # Run playbook
   ansible-playbook "${BASH_SOURCE%/*}/playbook.yaml" || exit 1
 
