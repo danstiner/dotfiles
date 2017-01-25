@@ -1,0 +1,9 @@
+---
+dependencies:
+    - role: "sa-visual-studio-code"
+      vs_code_packages:
+        - "msjsdiag.debugger-for-chrome"
+        - "hoovercj.vscode-ghc-mod"
+        - "justusadam.language-haskell"
+        - "hoovercj.haskell-linter"
+        - "PeterJausovec.vscode-docker"
