@@ -4,6 +4,5 @@ dist: trusty
 
 before_script:
     - rm "$HOME/.gitconfig"
-    - rm "$HOME/.bashrc"
 
 script: ./install.sh

@@ -1,3 +1,10 @@
+- stat: path=/home/{{ ansible_user_id }}/.bashrc
+  register: bashrc
+
+- name: Save existing .bashrc
+  command: mv "/home/{{ ansible_user_id }}/.bashrc" "{{ role_path }}/files/bashrc" 
+  when: bashrc.stat.islnk is defined and bashrc.stat.islnk == False
+
 - name: Link .bashrc
   file: src={{ role_path }}/files/bashrc dest=/home/{{ ansible_user_id }}/.bashrc state=link
 
