@@ -15,6 +15,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Launch byobu
+_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
+
 [ -r ~/.byobu/prompt ] && . ~/.byobu/prompt   #byobu-prompt#
 
 alias ll='ls -alF'
@@ -34,3 +37,4 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
