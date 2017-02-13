@@ -2,7 +2,4 @@ sudo: required
 
 dist: trusty
 
-before_script:
-    - rm "$HOME/.gitconfig"
-
 script: ./install.sh

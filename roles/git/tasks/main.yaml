@@ -2,5 +2,12 @@
   package: name=git state=present
   become: true
 
+- stat: path=/home/{{ ansible_user_id }}/.gitconfig
+  register: gitconfig
+
+- name: Save existing .gitconfig
+  command: mv "/home/{{ ansible_user_id }}/.gitconfig" "{{ role_path }}/files/gitconfig" 
+  when: gitconfig.stat.islnk is defined and gitconfig.stat.islnk == False
+
 - name: Link .gitconfig
   file: src={{ role_path }}/files/gitconfig dest=/home/{{ ansible_user_id }}/.gitconfig state=link
