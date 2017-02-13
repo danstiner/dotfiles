@@ -20,10 +20,6 @@ _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
 
 [ -r ~/.byobu/prompt ] && . ~/.byobu/prompt   #byobu-prompt#
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Use vim as the standard editor
 export VISUAL=vim
 export EDITOR="$VISUAL"

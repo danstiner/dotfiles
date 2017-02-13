@@ -1,2 +1,12 @@
 - name: Link .bashrc
   file: src={{ role_path }}/files/bashrc dest=/home/{{ ansible_user_id }}/.bashrc state=link
+
+- stat: path=/home/{{ ansible_user_id }}/.bash_aliases
+  register: bash_aliases
+
+- name: Save existing .bash_aliases
+  command: mv "/home/{{ ansible_user_id }}/.bash_aliases" "{{ role_path }}/files/bash_aliases" 
+  when: bash_aliases.stat.islnk is defined and bash_aliases.stat.islnk == False
+
+- name: Link .bash_aliases
+  file: src={{ role_path }}/files/bash_aliases dest=/home/{{ ansible_user_id }}/.bash_aliases state=link
