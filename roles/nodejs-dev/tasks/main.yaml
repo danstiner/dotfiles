@@ -10,7 +10,6 @@
   become: true
   with_items:
     - nodejs
-    - npm
     - "{{ build_essential_package_name }}"
 
 - name: Create npm prefix directory
