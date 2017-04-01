@@ -12,6 +12,7 @@
     - tig
     - htop
     - iotop
+    - iftop
     - nmap
 
 - name: Install GUI software
