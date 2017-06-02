@@ -12,3 +12,6 @@
 	ff = only
 [status]
 	showUntrackedFiles = all
+[rebase]
+	autoSquash = true
+	missingCommitsCheck = warn
