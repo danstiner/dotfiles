@@ -27,3 +27,4 @@
     - kdiff3
     - "{{ keepass_package_name }}"
     - redshift-gtk
+    - aspell-en
