@@ -15,3 +15,7 @@
 [rebase]
 	autoSquash = true
 	missingCommitsCheck = warn
+[merge]
+	tool = kdiff3
+[mergetool]
+	keepBackup = false
