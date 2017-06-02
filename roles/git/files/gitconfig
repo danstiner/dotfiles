@@ -6,6 +6,7 @@
 [alias]
 	publish = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	prune-branches = !git branch --merged master | grep -v '\\* master' | xargs -n 1 git branch -d
 [fetch]
 	prune = true
 [pull]
