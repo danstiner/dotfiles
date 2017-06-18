@@ -14,6 +14,7 @@
     - iotop
     - iftop
     - nmap
+    - "{{ the_silver_searcher_package_name }}"
 
 - name: Install GUI software
   package: name={{ item }} state=installed
