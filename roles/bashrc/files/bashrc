@@ -27,7 +27,10 @@ export EDITOR="$VISUAL"
 # Add npm local prefix to path
 export PATH="$HOME/.npm/bin:$PATH"
 
-export VIRTUALENVWRAPPER_PYTHON=python3
+# Add pyenv with virtualenv to path
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
