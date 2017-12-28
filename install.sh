@@ -32,7 +32,7 @@ else
   fi
 
   # Clone the repository
-  if [ -f "$HOME/dotfiles/install.sh" ]; then
+  if [ ! -f "$HOME/dotfiles/install.sh" ]; then
     git clone https://github.com/danstiner/dotfiles.git "$HOME/dotfiles" || exit 1
   fi
 
