@@ -21,3 +21,7 @@
 	tool = kdiff3
 [mergetool]
 	keepBackup = false
+[diff]
+	renameLimit = 3000
+[gui]
+	warndetachedcommit = true
