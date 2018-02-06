@@ -21,11 +21,9 @@
   package: name={{ item }} state=installed
   become: true
   with_items:
-    - firefox
     - git-gui
     - gitg
     - gitk
     - kdiff3
     - "{{ keepass_package_name }}"
-    - redshift-gtk
     - aspell-en
