@@ -24,6 +24,8 @@ _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
 # Add npm local prefix to path
 export PATH="$HOME/.npm/bin:$PATH"
 
