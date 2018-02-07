@@ -8,6 +8,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	prune-branches = !git branch --merged master | grep -v '\\* master' | xargs -n 1 git branch -d
 	git = !exec git
+	fixup = !exec git commit --fixup
 [fetch]
 	prune = true
 [pull]
