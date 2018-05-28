@@ -7,4 +7,4 @@ dependencies:
         - "justusadam.language-haskell"
         - "hoovercj.haskell-linter"
         - "PeterJausovec.vscode-docker"
-        - "ms-vscode.cpptools"
+        - "ms-vscode.go"
