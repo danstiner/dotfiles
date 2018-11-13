@@ -9,6 +9,7 @@
 	prune-branches = !git branch --merged master | grep -v '\\* master' | xargs -n 1 git branch -d
 	git = !exec git
 	fixup = !exec git commit --fixup
+	pushf = push --force-with-lease
 [fetch]
 	prune = true
 [pull]
