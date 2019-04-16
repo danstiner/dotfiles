@@ -2,7 +2,9 @@
 
 set -euxo pipefail
 
-if [ -d "${BASH_SOURCE%/*}/.git" ]; then
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+if [ -d "$SCRIPT_DIR/.git" ]; then
   # Running from a clone of the repository
 
   # Install ansible only if not already present
@@ -18,10 +20,10 @@ if [ -d "${BASH_SOURCE%/*}/.git" ]; then
   fi
 
   # Install ansible galaxy roles
-  ansible-galaxy install -r "${BASH_SOURCE%/*}/requirements.yml"
+  ansible-galaxy install -r "$SCRIPT_DIR/requirements.yml"
 
   # Run playbook
-  ansible-playbook "${BASH_SOURCE%/*}/playbook.yaml" 
+  ansible-playbook "$SCRIPT_DIR/playbook.yaml" 
 
 else
   # Running from outside repository, first make a clone
