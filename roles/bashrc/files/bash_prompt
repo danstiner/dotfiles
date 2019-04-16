@@ -1,0 +1,24 @@
+ps1_prompt_status() { local e=$?; [ $e != 0 ] && echo -e "$e "; }
+[ -n "$BYOBU_CHARMAP" ] || BYOBU_CHARMAP=$(locale charmap 2>/dev/null || echo)
+ps1_prompt_symbol() {
+    if [ "$USER" = "root" ]; then
+        printf "%s" "#";
+    elif [ "$BYOBU_DISTRO" = "Ubuntu" ]; then
+        case "$BYOBU_CHARMAP" in
+            "UTF-8")
+                # MATHEMATICAL RIGHT DOUBLE ANGLE BRACKET (U+27EB, Pe): ⟫
+                printf "%s" "⟫"
+            ;;
+            *)
+                # Simple ASCII greater-than sign
+                printf "%s" ">"
+            ;;
+        esac
+    else
+        printf "%s" "\$"
+    fi
+}
+
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+
+PS1="${debian_chroot:+($debian_chroot)}\[\e[31m\]\$(ps1_prompt_status)\[\e[00;32m\]\u\[\e[00m\]@\[\e[00;31m\]\h\[\e[00m\]:\[\e[00;36m\]\w\[\e[00m\]\$(declare -F __git_ps1 &>/dev/null && __git_ps1 \" (%s)\")\$(ps1_prompt_symbol) "
