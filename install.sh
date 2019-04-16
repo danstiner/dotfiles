@@ -2,28 +2,50 @@
 
 set -euxo pipefail
 
-SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+PWD="$( cd "$( dirname "$0" )" && pwd )"
 
-if [ -d "$SCRIPT_DIR/.git" ]; then
+if [ -d "$PWD/.git" ]; then
   # Running from a clone of the repository
 
-  # Install ansible only if not already present
-  if ! hash ansible-playbook 2>/dev/null; then
-    if [ -f "/etc/fedora-release" ]; then
-      sudo dnf -y install ansible python2-dnf
-    else
-      sudo apt-get install -y software-properties-common
-      sudo apt-add-repository -y ppa:ansible/ansible
-      sudo apt-get update
-      sudo apt-get install -y ansible
+  if hash rpm-ostree 2>/dev/null; then
+    # Fedora Silverblue, do not use ansible
+
+    link_dotfile () {
+      local file=$1
+      local dir=$2
+
+      if [[ -f $HOME/.$file && ! $HOME/.$file -ef $PWD/$dir/$file ]]; then
+        mv $HOME/.$file $PWD/$dir/$file
+        ln -nP $PWD/$dir/$file $HOME/.$file
+      fi
+    }
+    
+    link_dotfile gitconfig roles/git/files
+    link_dotfile bash_aliases roles/bashrc/files
+    link_dotfile bashrc roles/bashrc/files
+
+  else
+    # Install ansible only if not already present
+    if ! hash ansible-playbook 2>/dev/null; then
+
+      if [ -f "/etc/fedora-release" ]; then
+        sudo dnf -y install ansible python2-dnf
+      else
+        sudo apt-get install -y software-properties-common
+        sudo apt-add-repository -y ppa:ansible/ansible
+        sudo apt-get update
+        sudo apt-get install -y ansible
+      fi
+
     fi
+
+    # Install ansible galaxy roles
+    ansible-galaxy install -r "$PWD/requirements.yml"
+
+    # Run playbook
+    ansible-playbook "$PWD/playbook.yaml"
+
   fi
-
-  # Install ansible galaxy roles
-  ansible-galaxy install -r "$SCRIPT_DIR/requirements.yml"
-
-  # Run playbook
-  ansible-playbook "$SCRIPT_DIR/playbook.yaml" 
 
 else
   # Running from outside repository, first make a clone
