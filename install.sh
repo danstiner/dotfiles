@@ -14,14 +14,18 @@ if [ -d "$PWD/.git" ]; then
       local file=$1
       local dir=$2
 
-      if [[ -f $HOME/.$file && ! $HOME/.$file -ef $PWD/$dir/$file ]]; then
+      if [ -f $HOME/.$file ] && [ ! $HOME/.$file -ef $PWD/$dir/$file ]; then
         mv $HOME/.$file $PWD/$dir/$file
+      fi
+
+      if [ ! -f $HOME/.$file ]; then
         ln -nP $PWD/$dir/$file $HOME/.$file
       fi
     }
     
     link_dotfile gitconfig roles/git/files
     link_dotfile bash_aliases roles/bashrc/files
+    link_dotfile bash_prompt roles/bashrc/files
     link_dotfile bashrc roles/bashrc/files
 
   else
