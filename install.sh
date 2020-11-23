@@ -10,8 +10,6 @@ if [ -d "${BASH_SOURCE%/*}/.git" ]; then
     if [ -f "/etc/fedora-release" ]; then
       sudo dnf -y install ansible python2-dnf
     else
-      sudo apt-get install -y software-properties-common
-      sudo apt-add-repository -y ppa:ansible/ansible
       sudo apt-get update
       sudo apt-get install -y ansible
     fi
@@ -42,4 +40,3 @@ else
   "$HOME/dotfiles/install.sh"
 
 fi
-
